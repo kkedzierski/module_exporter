@@ -1,20 +1,17 @@
-# Prerequisities
+# How its work
 
-Install latest docker engine along with docker-compose as described on the docker hub:
-https://docs.docker.com/engine/install/
-https://docs.docker.com/compose/install/
+Export and create front-end program from module in Laravel project
 
-# Installation
 
-In order to launch this project run the following commands:
+# Usage
+
+In terminal change directory to module_exporter/app and write:
 
 ```
-cp application/.env.example application/.env
-docker-compose up -d
-docker-compose exec app composer i -o
+php ./app.php
 ```
-
-Then you should be ready to start. This project is a basic Laravel project with docker-compose setup that allows you to immediately start working. The app works by itself at `http://localhost:8000` port.
-
-Good luck!
+After this command you are able to use laravel Artisan
+```
+php artisan export-modules
+```
 
