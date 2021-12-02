@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Console\Commands;
-
+require_once('./modules_exporter/src/classes/ModulesExport.php');
 use Illuminate\Console\Command;
 
 class ExportModulesCommand extends Command
@@ -37,7 +37,9 @@ class ExportModulesCommand extends Command
      */
     public function handle()
     {
-        var_dump("exported modules");        
+        $modulesExport = new ModulesExport('./Modules');
+        $modulesExport->setModulesDirectoryArray();
+        $modulesExport->exportProgram();      
         return Command::SUCCESS;
     }
 }
