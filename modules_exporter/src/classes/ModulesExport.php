@@ -3,8 +3,11 @@
 namespace App\Console\Commands;
 class ModulesExport{
 
-    public function __construct(){
-        var_dump("test");
+    private string $modulesDirectoryPath;
+    private array  $modulesDirectoryPathArray = [];
+
+    public function __construct($modulesDirectoryPath){
+        $this->modulesDirectoryPath = $modulesDirectoryPath;
     }
 
     /**
@@ -28,6 +31,23 @@ class ModulesExport{
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
         
+    }
+
+    public function setModulesDirectoryArray(){
+        $modulesDirectoryNames = array_slice(scandir($this->modulesDirectoryPath), 2); 
+        foreach($modulesDirectoryNames as $moduleDirectoryName){
+            array_push($this->modulesDirectoryPathArray, "$this->modulesDirectoryPath/$moduleDirectoryName");
+        }
+    }
+
+    private function createProgramDirectory(string $programDirectoryName, string $directoryPath='../programs'): void{
+        if(!is_dir($directoryPath)){
+            mkdir($directoryPath, 0755, true);
+        }
+
+        if(!is_dir("$directoryPath/$programDirectoryName")){
+            mkdir("$directoryPath/$programDirectoryName", 0755, true);
+        }
     }
 
 }
