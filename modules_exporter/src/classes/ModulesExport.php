@@ -50,32 +50,13 @@ class ModulesExport{
         }
     }
 
-    private function exportJSFile(string $jsFilePath, string $progamDirectoryName, string $programDirectoryPath='../programs'):void{
-        $jsFileName = substr($jsFilePath, strpos($jsFilePath, "/") + 1);
+    private function exportFile(string $filePath, string $progamDirectoryName, string $programDirectoryPath='../programs'):void{
+        $fileName = substr($filePath, strpos($filePath, "/") + 1);
         try {
-            copy($jsFilePath, "$programDirectoryPath/$progamDirectoryName/$jsFileName");
+            copy($filePath, "$programDirectoryPath/$progamDirectoryName/$fileName");
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
     }
-
-    private function exportCSSFile(string $CSSFilePath, string $progamDirectoryName, string $programDirectoryPath='../programs'):void{
-        $CSSFileName = substr($CSSFilePath, strpos($CSSFilePath, "/") + 1);
-        try {
-            copy($jsFilePath, "$programDirectoryPath/$progamDirectoryName/$CSSFileName");
-        } catch (Exception $e) {
-            echo 'Caught exception: ',  $e->getMessage(), "\n";
-        }
-    }
-
-    private function exportHTMLFile(string $HTMLFilePath, string $progamDirectoryName, string $programDirectoryPath='../programs'):void{
-        $HTMLFileName = substr($HTMLFilePath, strpos($HTMLFilePath, "/") + 1);
-        try {
-            copy($HTMLFilePath, "$programDirectoryPath/$progamDirectoryName/$HTMLFileName");
-        } catch (Exception $e) {
-            echo 'Caught exception: ',  $e->getMessage(), "\n";
-        }
-    }
-
 }
 
